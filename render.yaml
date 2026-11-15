@@ -1,0 +1,14 @@
+# Render.com blueprint: New > Blueprint > pick your GitHub repo.
+services:
+  - type: web
+    name: healthmate-ai
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/status
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true      # Render creates a strong random secret
+      - key: SEED_DEMO
+        value: "true"            # synthetic demo account (set "false" for a real launch)
+      - key: GEMINI_API_KEY
+        sync: false              # paste your key in the Render dashboard (optional; blank = demo mode)
